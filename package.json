@@ -1,0 +1,32 @@
+{
+  "name": "@mojule/async-mapper",
+  "version": "0.1.0",
+  "description": "Map a tree-like structure asynchronously",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "tsc && mocha ./dist/test",
+    "coverage": "tsc && nyc --reporter=html --reporter=text mocha ./dist/test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mojule/async-mapper.git"
+  },
+  "author": "Nik Coughlin <nrkn.com@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mojule/async-mapper/issues"
+  },
+  "homepage": "https://github.com/mojule/async-mapper#readme",
+  "private": false,
+  "devDependencies": {
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.9.2"
+  },
+  "nyc": {
+    "exclude": [
+      "dist/test"
+    ]
+  }
+}

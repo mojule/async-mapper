@@ -1,6 +1,6 @@
 import { promises } from 'fs'
 import * as path from 'path'
-import { PredicateMap, FnMap } from '../types'
+import { PredicateMap, FnMap, MapperFnOptions } from '../types'
 import { Mapper } from '..'
 
 const { stat, readdir, readFile } = promises
@@ -25,10 +25,12 @@ export const map: FnMap = {
 
     return [ 'file', base, contents ]
   },
-  directory: async ( directoryPath: string, options ) => {
+  directory: async ( directoryPath: string, options: MapperFnOptions ) => {
     const { mapper } = options
-    const contents = await readdir( directoryPath )
     const { base } = path.parse( directoryPath )
+
+    const contents = await readdir( directoryPath )
+
     const children = await Promise.all( contents.map( name => {
       const childPath = path.join( directoryPath, name )
 
