@@ -5,7 +5,9 @@ import { Mapper } from '..'
 
 const { stat, readdir, readFile } = promises
 
-export type FsNode = [ string, string, ...any[] ]
+export type FsNodeId = 'file' | 'directory'
+// recursive types in typescript are too difficult to easily describe this
+export type FsNode = [ FsNodeId, string, ...any[] ]
 
 export const predicates: PredicateMap<string> = {
   file: async ( p: string ) => {
