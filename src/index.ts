@@ -18,7 +18,7 @@ export const Mapper = <From, To>( mapperOptions: MapperOptions<From, To> ) => {
     )
 
     if( name ){
-      return await map[ name ]( value, currentOptions )
+      return map[ name ]( value, currentOptions )
     }
 
     throw Error( 'No function found in predicates to handle this value' )
