@@ -5,7 +5,7 @@ import { Mapper } from '..'
 
 const { stat, readdir, readFile } = promises
 
-type FsNode = [ string, string, ...any[] ]
+export type FsNode = [ string, string, ...any[] ]
 
 export const predicates: PredicateMap<string> = {
   file: async ( p: string ) => {

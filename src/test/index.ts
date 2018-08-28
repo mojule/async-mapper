@@ -1,8 +1,8 @@
 import * as assert from 'assert'
-import { fsMapper, predicates, map } from './fs-mapper'
+import { fsMapper, predicates, map, FsNode } from './fs-mapper'
 import { Mapper } from '..';
 
-const expect = [
+const expect: FsNode = [
   "directory",
   "fixtures",
   [
