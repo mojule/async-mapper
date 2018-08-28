@@ -5,7 +5,9 @@ import { Mapper } from '..'
 
 const { stat, readdir, readFile } = promises
 
-export const predicates: PredicateMap = {
+type FsNode = [ string, string, ...any[] ]
+
+export const predicates: PredicateMap<string> = {
   file: async ( p: string ) => {
     const stats = await stat( p )
 
@@ -18,14 +20,14 @@ export const predicates: PredicateMap = {
   }
 }
 
-export const map: FnMap = {
+export const map: FnMap<string,FsNode> = {
   file: async ( filePath: string ) => {
     const contents = await readFile( filePath, 'utf8' )
     const { base } = path.parse( filePath )
 
     return [ 'file', base, contents ]
   },
-  directory: async ( directoryPath: string, options: MapperFnOptions ) => {
+  directory: async ( directoryPath: string, options: MapperFnOptions<string,FsNode> ) => {
     const { mapper } = options
     const { base } = path.parse( directoryPath )
 

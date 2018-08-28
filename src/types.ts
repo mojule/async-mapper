@@ -1,20 +1,20 @@
-export type MapperFn = ( value: any, options: MapperFnOptions ) => Promise<any>
+export type MapperFn<From,To> = ( value: From, options: MapperFnOptions<From,To> ) => Promise<To>
 
 export type AsyncPredicate = ( value: any ) => Promise<boolean>
 
-export interface PredicateMap {
-  [ name: string ]: ( value: any ) => Promise<boolean>
+export interface PredicateMap<From> {
+  [ name: string ]: ( value: From ) => Promise<boolean>
 }
 
-export interface FnMap {
-  [ name: string ]: MapperFn
+export interface FnMap<From,To> {
+  [ name: string ]: MapperFn<From,To>
 }
 
-export interface MapperOptions {
-  map: FnMap
-  predicates: PredicateMap
+export interface MapperOptions<From,To> {
+  map: FnMap<From,To>
+  predicates: PredicateMap<From>
 }
 
-export interface MapperFnOptions extends MapperOptions {
-  mapper: MapperFn
+export interface MapperFnOptions<From,To> extends MapperOptions<From,To> {
+  mapper: MapperFn<From,To>
 }

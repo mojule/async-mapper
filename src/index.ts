@@ -1,9 +1,9 @@
 import { MapperOptions, MapperFnOptions } from './types'
 import { find } from './util'
 
-export const Mapper = ( mapperOptions: MapperOptions ) => {
-  const mapper = async ( value: any, options?: MapperOptions ) => {
-    const currentOptions = <MapperFnOptions>Object.assign(
+export const Mapper = <From, To>( mapperOptions: MapperOptions<From, To> ) => {
+  const mapper = async ( value: any, options?: MapperOptions<From, To> ) => {
+    const currentOptions = <MapperFnOptions<From, To>>Object.assign(
       {},
       mapperOptions,
       { mapper },

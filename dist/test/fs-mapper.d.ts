@@ -1,4 +1,6 @@
 import { PredicateMap, FnMap } from '../types';
-export declare const predicates: PredicateMap;
-export declare const map: FnMap;
-export declare const fsMapper: (value: any, options?: import("../types").MapperOptions | undefined) => any;
+declare type FsNode = [string, string, ...any[]];
+export declare const predicates: PredicateMap<string>;
+export declare const map: FnMap<string, FsNode>;
+export declare const fsMapper: (value: any, options?: import("../types").MapperOptions<string, [string, string, ...any[]]> | undefined) => any;
+export {};
